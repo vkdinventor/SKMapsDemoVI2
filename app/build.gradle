@@ -1,0 +1,42 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.1.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: '*.jar')
+    compile project(':debugkit')
+    compile project(':sdktools')
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
+
+    compileOptions {
+        sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
+        targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
+    }
+
+    lintOptions {
+        abortOnError false
+        ignoreWarnings true
+        quiet true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+}
+
+
+
+
